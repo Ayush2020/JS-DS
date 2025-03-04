@@ -38,3 +38,5 @@ console.log("Generated Numbers:", numbers);
 let { secondLargest, secondSmallest } = findSecondLargestAndSmallest(numbers);
 console.log(`Second Largest: ${secondLargest}`);
 console.log(`Second Smallest: ${secondSmallest}`);
+
+
