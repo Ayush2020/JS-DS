@@ -1,42 +1,38 @@
-const generateRandomNumbers = () => {
-    let arr = [];
-    for (let i = 0; i < 10; i++) {
-        arr.push(Math.floor(Math.random() * 900) + 100); 
-    }
-    return arr;
-};
+// Function to generate a random 3-digit number
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 900) + 100;
+}
 
-const findSecondLargestAndSmallest = (arr) => {
-    let firstMax = -Infinity, secondMax = -Infinity;
-    let firstMin = Infinity, secondMin = Infinity;
-
+// Function to find the second largest and second smallest without sorting
+function findSecondLargestAndSmallest(arr) {
+    let largest = -Infinity, secondLargest = -Infinity;
+    let smallest = Infinity, secondSmallest = Infinity;
+    
     for (let num of arr) {
-   
-        if (num > firstMax) {
-            secondMax = firstMax;
-            firstMax = num;
-        } else if (num > secondMax && num !== firstMax) {
-            secondMax = num;
+        if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+        } else if (num > secondLargest && num !== largest) {
+            secondLargest = num;
         }
-
-     
-        if (num < firstMin) {
-            secondMin = firstMin;
-            firstMin = num;
-        } else if (num < secondMin && num !== firstMin) {
-            secondMin = num;
+        
+        if (num < smallest) {
+            secondSmallest = smallest;
+            smallest = num;
+        } else if (num < secondSmallest && num !== smallest) {
+            secondSmallest = num;
         }
     }
-
-    return { secondLargest: secondMax, secondSmallest: secondMin };
-};
-
-
-let numbers = generateRandomNumbers();
-console.log("Generated Numbers:", numbers);
-
-let { secondLargest, secondSmallest } = findSecondLargestAndSmallest(numbers);
-console.log(`Second Largest: ${secondLargest}`);
-console.log(`Second Smallest: ${secondSmallest}`);
+    
+    return { secondLargest, secondSmallest };
+}
 
 
+const randomNumbers = []
+
+for(let i=0; i<10; i++){
+    randomNumbers.push(generateRandomNumber())
+}
+
+let { secondLargest, secondSmallest } = findSecondLargestAndSmallest(randomNumbers);
+console.log(`Second Largest: ${secondLargest}, Second Smallest: ${secondSmallest}`);
